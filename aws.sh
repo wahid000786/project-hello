@@ -11,6 +11,8 @@ DOCKER_IMAGE_NAME="my-app-image"
 # Step 1: Build the Docker image
 docker build -t $DOCKER_IMAGE_NAME .
 
+docker run -p 8080:80 my-web-app
+
 # Step 2: Authenticate Docker to the Amazon ECR registry
 aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $(aws sts get-caller-identity --query 'Account' --output text).dkr.ecr.$AWS_REGION.amazonaws.com
 
