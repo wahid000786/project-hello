@@ -15,6 +15,9 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t my-web-app .
+      - name: Run the Docker container image
+        run: |
+          docker run -p 8080:80 my-web-app
 
       # Optional: Push Docker image to a registry like Docker Hub
       # - name: Push Docker image
