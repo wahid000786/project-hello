@@ -1,0 +1,25 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Build Docker image
+        run: |
+          docker build -t my-web-app .
+
+      # Optional: Push Docker image to a registry like Docker Hub
+      # - name: Push Docker image
+      #   run: |
+      #     docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      #     docker tag my-web-app ${{ secrets.DOCKER_USERNAME }}/my-web-app
+      #     docker push ${{ secrets.DOCKER_USERNAME }}/my-web-app
+
